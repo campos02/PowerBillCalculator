@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumptionCalculator", "Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumptionCalculator.Desktop", "..\ConsumptionCalculator.Desktop\ConsumptionCalculator.Desktop.csproj", "{4B409041-E942-4BC0-B59E-3F243135EE0C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumptionCalculator.Android", "..\ConsumptionCalculator.Android\ConsumptionCalculator.Android.csproj", "{4B2A2972-5F3C-407B-8A9F-5A6B0D65619D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{4B409041-E942-4BC0-B59E-3F243135EE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B409041-E942-4BC0-B59E-3F243135EE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B409041-E942-4BC0-B59E-3F243135EE0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B2A2972-5F3C-407B-8A9F-5A6B0D65619D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B2A2972-5F3C-407B-8A9F-5A6B0D65619D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B2A2972-5F3C-407B-8A9F-5A6B0D65619D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4B2A2972-5F3C-407B-8A9F-5A6B0D65619D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B2A2972-5F3C-407B-8A9F-5A6B0D65619D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B2A2972-5F3C-407B-8A9F-5A6B0D65619D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

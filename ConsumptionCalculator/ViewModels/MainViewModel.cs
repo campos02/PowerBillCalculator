@@ -1,6 +1,7 @@
 ﻿using ReactiveUI;
 using System;
 using System.Reactive;
+using ConsumptionCalculator.Models;
 
 namespace ConsumptionCalculator.ViewModels;
 
@@ -25,8 +26,17 @@ public class MainViewModel : ViewModelBase
 
     private void DisplayCost()
     {
-        if (Consumption is "") { return; }
-        consumption = Convert.ToDouble(Consumption);
-        Cost = consumption * 0.463 + consumption * 0.342 + 7.27;
+        if (Consumption == string.Empty)
+            consumption = 0;
+        else
+        {
+            try
+            {
+                consumption = Convert.ToDouble(Consumption);
+            }
+            catch { return; }
+        }
+
+        Cost = Bill.Cost(consumption);
     }
 }
