@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace ConsumptionCalculator.Models;
 
-namespace ConsumptionCalculator.Models
+public class Bill
 {
-    public class Bill
+    public static double Cost(double consumption)
     {
-        public static double Cost(double consumption)
-        {
-            return (consumption * 0.805) + 7.27;
-        }
+        return (consumption * 0.805) + 7.27;
     }
 }
