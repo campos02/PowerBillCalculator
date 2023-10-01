@@ -16,8 +16,8 @@ public class MainViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref cost, value);
     }
 
-    private double consumption = 0;
-    private double cost = 0;
+    private double consumption;
+    private double cost;
 
     public MainViewModel() 
     {

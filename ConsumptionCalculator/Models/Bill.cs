@@ -6,7 +6,7 @@ namespace ConsumptionCalculator.Models
     {
         public static double Cost(double consumption)
         {
-            return consumption * 0.463 + consumption * 0.342 + 7.27;
+            return (consumption * 0.805) + 7.27;
         }
     }
 }

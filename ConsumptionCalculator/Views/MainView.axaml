@@ -17,8 +17,10 @@
   <Grid Margin="30" RowDefinitions="10, Auto, *, Auto" ColumnDefinitions="*, 5, Auto">
     <TextBlock Grid.Row="1" HorizontalAlignment="Center" 
                FontWeight="ExtraBold" FontSize="20">Power Bill Calculator</TextBlock>
+    
     <Grid Grid.Row="2" RowDefinitions="Auto, 3, Auto, 5, Auto, *, Auto" ColumnDefinitions="*, 5, Auto" VerticalAlignment="Center">
       <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center">Consumption:</TextBlock>
+      
       <TextBox Grid.Row="2" Text="{Binding Consumption}">
         <i:Interaction.Behaviors>
           <ia:EventTriggerBehavior EventName="TextChanged">
@@ -26,8 +28,10 @@
           </ia:EventTriggerBehavior>
         </i:Interaction.Behaviors>
       </TextBox>
+      
       <TextBlock Grid.Row="2" Grid.Column="3" VerticalAlignment="Center">kWh</TextBlock>
     </Grid>
+    
     <TextBlock Grid.Row="7" Text="{Binding Cost, StringFormat='Cost: R$ {0:0.00}'}" 
                Grid.ColumnSpan="3" HorizontalAlignment="Center"
                FontWeight="Bold"></TextBlock>
