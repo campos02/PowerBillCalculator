@@ -9,14 +9,15 @@ public class MainViewModel : ViewModelBase
 {
     public ReactiveCommand<Unit, Unit> CostCommand { get; }
 
-    public string Consumption { get; set; } = string.Empty;
+    public string LastReading { get; set; } = string.Empty;
+    public string CurrentReading { get; set; } = string.Empty;
+
     public double Cost
     {
         get => cost;
         set => this.RaiseAndSetIfChanged(ref cost, value);
     }
 
-    private double consumption;
     private double cost;
 
     public MainViewModel() 
@@ -26,17 +27,18 @@ public class MainViewModel : ViewModelBase
 
     private void DisplayCost()
     {
-        if (Consumption == string.Empty)
-            consumption = 0;
-        else
-        {
-            try
-            {
-                consumption = Convert.ToDouble(Consumption);
-            }
-            catch { return; }
-        }
+        double lastMonth = 0, currentMonth = 0;
 
-        Cost = Bill.Cost(consumption);
+        try
+        {
+            if (LastReading != string.Empty)
+                lastMonth = Convert.ToDouble(LastReading);
+
+            if (CurrentReading != string.Empty)
+                currentMonth = Convert.ToDouble(CurrentReading);
+
+            Cost = Bill.Cost(lastMonth, currentMonth);
+        }
+        catch { return; }
     }
 }

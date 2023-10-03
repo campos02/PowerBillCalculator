@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:ConsumptionCalculator.ViewModels"
              xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
              xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
-             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
              x:Class="ConsumptionCalculator.Views.MainView"
              x:DataType="vm:MainViewModel">
   <Design.DataContext>
@@ -17,22 +17,35 @@
   <Grid Margin="30" RowDefinitions="10, Auto, *, Auto" ColumnDefinitions="*, 5, Auto">
     <TextBlock Grid.Row="1" HorizontalAlignment="Center" 
                FontWeight="ExtraBold" FontSize="20">Power Bill Calculator</TextBlock>
-    
-    <Grid Grid.Row="2" RowDefinitions="Auto, 3, Auto, 5, Auto, *, Auto" ColumnDefinitions="*, 5, Auto" VerticalAlignment="Center">
-      <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center">Consumption:</TextBlock>
-      
-      <TextBox Grid.Row="2" Text="{Binding Consumption}">
+
+    <Grid Grid.Row="2" RowDefinitions="Auto, 3, Auto, 30, Auto, 3, Auto" ColumnDefinitions="*, 5, Auto" VerticalAlignment="Center">
+      <TextBlock Grid.ColumnSpan="3" HorizontalAlignment="Center">Last reading:</TextBlock>
+
+      <TextBox Grid.Row="2" Text="{Binding LastReading}">
         <i:Interaction.Behaviors>
           <ia:EventTriggerBehavior EventName="TextChanged">
             <InvokeCommandAction Command="{Binding CostCommand}"/>
           </ia:EventTriggerBehavior>
         </i:Interaction.Behaviors>
       </TextBox>
-      
-      <TextBlock Grid.Row="2" Grid.Column="3" VerticalAlignment="Center">kWh</TextBlock>
+
+      <TextBlock Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">kWh</TextBlock>
+
+      <TextBlock Grid.ColumnSpan="3" Grid.Row="4" HorizontalAlignment="Center">Current reading:</TextBlock>
+
+      <TextBox Text="{Binding CurrentReading}"
+                Grid.Row="6">
+        <i:Interaction.Behaviors>
+          <ia:EventTriggerBehavior EventName="TextChanged">
+            <InvokeCommandAction Command="{Binding CostCommand}"/>
+          </ia:EventTriggerBehavior>
+        </i:Interaction.Behaviors>
+      </TextBox>
+
+      <TextBlock Grid.Column="2" Grid.Row="6" VerticalAlignment="Center">kWh</TextBlock>
     </Grid>
     
-    <TextBlock Grid.Row="7" Text="{Binding Cost, StringFormat='Cost: R$ {0:0.00}'}" 
+    <TextBlock Grid.Row="3" Text="{Binding Cost, StringFormat='Cost: R$ {0:0.00}'}" 
                Grid.ColumnSpan="3" HorizontalAlignment="Center"
                FontWeight="Bold"></TextBlock>
   </Grid>
