@@ -38,12 +38,18 @@ public class MainViewModel : ViewModelBase
         SettingsCommand = ReactiveCommand.Create(GoToSettings);
     }
 
+    /// <summary>
+    /// Go to settings page
+    /// </summary>
     private void GoToSettings()
     {
         CurrentPage = Pages[1];
         CanGoBack = true;
     }
 
+    /// <summary>
+    /// Do index validation and go to previous page
+    /// </summary>
     private void GoBack()
     {
         int index = Pages.IndexOf(CurrentPage);

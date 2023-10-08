@@ -15,18 +15,19 @@
 
     <Grid Grid.Row="2"
           RowDefinitions="Auto, 3, Auto, 30, Auto, 3, Auto"
-          ColumnDefinitions="*, 5, Auto"
           VerticalAlignment="Center">
 
       <TextBlock Grid.ColumnSpan="3"
-                 HorizontalAlignment="Center">kWh cost:</TextBlock>
+                 HorizontalAlignment="Center"
+                 Text="{Binding Currency, StringFormat='kWh cost({0}):'}"/>
 
       <TextBox Grid.Row="2"
                Text="{Binding EnergyCost}"/>
 
       <TextBlock Grid.ColumnSpan="3"
                  Grid.Row="4"
-                 HorizontalAlignment="Center">Taxes:</TextBlock>
+                 HorizontalAlignment="Center"
+                 Text="{Binding Currency, StringFormat='Taxes({0}):'}"/>
 
       <TextBox Text="{Binding Taxes}"
                Grid.Row="6"/>

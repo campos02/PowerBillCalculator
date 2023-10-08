@@ -1,6 +1,7 @@
 ﻿using ConsumptionCalculator.Models;
 using ReactiveUI;
 using System;
+using System.Globalization;
 using System.Reactive;
 
 namespace ConsumptionCalculator.ViewModels;
@@ -14,9 +15,9 @@ public class CalculatorViewModel : ViewModelBase
 
     public Bill Bill { get; set; } = new Bill();
 
-    private double cost;
+    private string cost = string.Empty;
 
-    public double Cost
+    public string Cost
     {
         get => cost;
         set => this.RaiseAndSetIfChanged(ref cost, value);
@@ -27,6 +28,9 @@ public class CalculatorViewModel : ViewModelBase
         CostCommand = ReactiveCommand.Create(DisplayCost);
     }
 
+    /// <summary>
+    /// Convert input to double, call bill cost function and display its result in a currency format
+    /// </summary>
     private void DisplayCost()
     {
         double lastMonth = 0, currentMonth = 0;
@@ -39,7 +43,7 @@ public class CalculatorViewModel : ViewModelBase
             if (CurrentReading != string.Empty)
                 currentMonth = Convert.ToDouble(CurrentReading);
 
-            Cost = Bill.Cost(lastMonth, currentMonth);
+            Cost = Bill.Cost(lastMonth, currentMonth).ToString("C2", CultureInfo.CurrentCulture);
         }
         catch { return; }
     }

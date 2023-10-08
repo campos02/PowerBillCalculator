@@ -57,7 +57,7 @@
     </Grid>
 
     <TextBlock Grid.Row="4"
-               Text="{Binding Cost, StringFormat='Cost: R$ {0:0.00}'}"
+               Text="{Binding Cost, StringFormat='Cost: {0}'}"
                Grid.ColumnSpan="3"
                HorizontalAlignment="Center"
                FontWeight="Bold"/>
