@@ -1,44 +1,60 @@
-﻿using ReactiveUI;
-using System;
+﻿using DynamicData;
+using ReactiveUI;
 using System.Reactive;
-using ConsumptionCalculator.Models;
 
 namespace ConsumptionCalculator.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-    public ReactiveCommand<Unit, Unit> CostCommand { get; }
+    public ReactiveCommand<Unit, Unit> BackCommand { get; }
+    public ReactiveCommand<Unit, Unit> SettingsCommand { get; }
 
-    public string LastReading { get; set; } = string.Empty;
-    public string CurrentReading { get; set; } = string.Empty;
-
-    public double Cost
+    public ViewModelBase CurrentPage
     {
-        get => cost;
-        set => this.RaiseAndSetIfChanged(ref cost, value);
+        get => currentPage;
+        private set => this.RaiseAndSetIfChanged(ref currentPage, value);
     }
 
-    private double cost;
-
-    public MainViewModel() 
+    public bool CanGoBack
     {
-        CostCommand = ReactiveCommand.Create(DisplayCost);
+        get => canGoBack;
+        private set => this.RaiseAndSetIfChanged(ref canGoBack, value);
     }
 
-    private void DisplayCost()
+    private ViewModelBase currentPage;
+    private bool canGoBack;
+
+    private readonly ViewModelBase[] Pages =
     {
-        double lastMonth = 0, currentMonth = 0;
+        new CalculatorViewModel(),
+        new SettingsViewModel()
+    };
 
-        try
-        {
-            if (LastReading != string.Empty)
-                lastMonth = Convert.ToDouble(LastReading);
+    public MainViewModel()
+    {
+        currentPage = Pages[0];
 
-            if (CurrentReading != string.Empty)
-                currentMonth = Convert.ToDouble(CurrentReading);
+        BackCommand = ReactiveCommand.Create(GoBack);
+        SettingsCommand = ReactiveCommand.Create(GoToSettings);
+    }
 
-            Cost = Bill.Cost(lastMonth, currentMonth);
-        }
-        catch { return; }
+    private void GoToSettings()
+    {
+        CurrentPage = Pages[1];
+        CanGoBack = true;
+    }
+
+    private void GoBack()
+    {
+        int index = Pages.IndexOf(CurrentPage);
+
+        if (index <= 0)
+            return;
+
+        index -= 1;
+        CurrentPage = Pages[index];
+        
+        if (index == 0)
+            CanGoBack = false;
     }
 }

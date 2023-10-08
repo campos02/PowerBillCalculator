@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
+             x:Class="ConsumptionCalculator.Views.SettingsView">
+  
+  <Grid RowDefinitions="10, Auto, *, 20, Auto"
+        Margin="30">
+
+    <TextBlock Grid.Row="1"
+                 HorizontalAlignment="Center"
+                 FontWeight="ExtraBold"
+                 FontSize="20">Settings</TextBlock>
+
+    <Grid Grid.Row="2"
+          RowDefinitions="Auto, 3, Auto, 30, Auto, 3, Auto"
+          ColumnDefinitions="*, 5, Auto"
+          VerticalAlignment="Center">
+
+      <TextBlock Grid.ColumnSpan="3" HorizontalAlignment="Center">kWh cost:</TextBlock>
+
+      <TextBox Grid.Row="2"
+               Text=""/>
+
+      <TextBlock Grid.ColumnSpan="3"
+                 Grid.Row="4"
+                 HorizontalAlignment="Center">Taxes:</TextBlock>
+
+      <TextBox Text=""
+               Grid.Row="6"/>
+      
+    </Grid>
+
+    <Button Grid.Row="4"
+            HorizontalAlignment="Center">Save</Button>
+
+  </Grid>
+</UserControl>
