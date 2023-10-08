@@ -9,6 +9,9 @@ public class MainViewModel : ViewModelBase
     public ReactiveCommand<Unit, Unit> BackCommand { get; }
     public ReactiveCommand<Unit, Unit> SettingsCommand { get; }
 
+    private ViewModelBase currentPage;
+    private bool canGoBack;
+
     public ViewModelBase CurrentPage
     {
         get => currentPage;
@@ -20,9 +23,6 @@ public class MainViewModel : ViewModelBase
         get => canGoBack;
         private set => this.RaiseAndSetIfChanged(ref canGoBack, value);
     }
-
-    private ViewModelBase currentPage;
-    private bool canGoBack;
 
     private readonly ViewModelBase[] Pages =
     {

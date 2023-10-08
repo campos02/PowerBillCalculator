@@ -12,6 +12,7 @@
         ColumnDefinitions="*, 5, Auto">
 
     <TextBlock Grid.Row="1"
+               Grid.ColumnSpan="3"
                HorizontalAlignment="Center"
                FontWeight="ExtraBold"
                FontSize="20">Power Bill Calculator</TextBlock>

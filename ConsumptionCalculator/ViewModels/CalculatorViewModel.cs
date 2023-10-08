@@ -12,13 +12,15 @@ public class CalculatorViewModel : ViewModelBase
     public string LastReading { get; set; } = string.Empty;
     public string CurrentReading { get; set; } = string.Empty;
 
+    public Bill Bill { get; set; } = new Bill();
+
+    private double cost;
+
     public double Cost
     {
         get => cost;
         set => this.RaiseAndSetIfChanged(ref cost, value);
     }
-
-    private double cost;
 
     public CalculatorViewModel()
     {

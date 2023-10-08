@@ -4,12 +4,14 @@ namespace ConsumptionCalculator.Models;
 
 public class Bill
 {
-    public static double Cost(double consumption)
+    public SettingsManager SettingsManager { get; private set; } = new SettingsManager();
+
+    public double Cost(double consumption)
     {
-        return (consumption * 0.805) + 7.27;
+        return (consumption * SettingsManager.Settings.EnergyCost) + SettingsManager.Settings.Taxes;
     }
 
-    public static double Cost(double lastReading, double currentReading)
+    public double Cost(double lastReading, double currentReading)
     {
         if (lastReading > currentReading)
             throw new ArgumentException("Current reading is greater than last reading");
