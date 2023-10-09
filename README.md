@@ -3,12 +3,11 @@ Simple Avalonia app that calculates a power bill. Calculations are based on kWh 
 
 Can be compiled for desktop and Android.
 
-# Use
+## Use
+The default setting for all parameters is zero, so on first use it's necessary to set them via the settings page, which is accessible through the bottom left button.
+
 * Results are displayed as valid inputs are given.
 * Last reading is subtracted from current when calculating. To use a single kWh value, fill the latter while leaving the former empty.
-
-### First use
-The default settings for all parameters is zero, so on first use it's necessary to set them via the settings page, which is accessible through the bottom right button.
 
 ## Settings
 Both values used for calculation are customizable and saved locally.
